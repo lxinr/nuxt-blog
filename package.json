@@ -1,0 +1,33 @@
+{
+  "name": "nuxt-blog",
+  "version": "1.0.0",
+  "description": "一个基于nuxt.js构建博客系统",
+  "author": "lxinr",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=3003 nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production HOST=127.0.0.1 PORT=3003 node server/index.js",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "nuxt": "^2.3.4",
+    "vuetify": "^1.2.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}
