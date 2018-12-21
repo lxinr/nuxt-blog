@@ -1,29 +1,37 @@
 <template lang="pug">
   v-content.px-0.py-0.fade-out(v-scroll="onScroll")
-    v-toolbar(fixed inverted-scroll scroll-off-screen :scroll-threshold="80" app)
+    v-toolbar.transparent(fixed flat dense scroll-off-screen :scroll-threshold="80")
+      v-toolbar-side-icon.hidden-md-and-up.white--text
+      v-toolbar-title.hidden-sm-and-down.white--text LiuX
+      v-spacer
+      v-toolbar-items.hidden-sm-and-down
+        v-btn.h3.white--text(flat @click="$vuetify.goTo(8800)") HOME
+        v-btn.h3.white--text(flat) TAGS
+    v-toolbar(fixed dense inverted-scroll scroll-off-screen :scroll-threshold="80")
       v-toolbar-side-icon.hidden-md-and-up
+      v-toolbar-title.hidden-sm-and-down LiuX
       v-spacer
       v-toolbar-items.hidden-sm-and-down
         v-btn.h3(flat @click="$vuetify.goTo(8800)") HOME
         v-btn.h3(flat) TAGS
-    .banner.site-banner
+    .banner.mb-5.site-banner
       .tit LiuX Blog
       .avatar.elevation-10
-    v-container.px-0.py-0(fill-height fluid)
-      v-layout(fill-height column)
-        v-flex(xs12)
-        v-flex(xs12)
-        v-flex(xs12)
-        v-flex(xs12)
-      v-layout(fill-height column)
-        v-flex(xs12)
-        v-flex(xs12)
-        v-flex(xs12)
-        v-flex(xs12)
+      .sub-info 这深夜一片寂静，是因为你还没听到声音
+    v-container.px-0.py-5(fluid justify-center)
+      v-hover 啊哈哈哈哈哈
+      Card(v-for="index in 8" :key="index")  
+    Footer
 </template>
 
 <script>
+import Footer from '~/components/Footer'
+import Card from '~/components/Card'
 export default {
+  components: {
+    Footer,
+    Card
+  },
   data() {
     return {
       offsetTop: 0
@@ -39,6 +47,12 @@ export default {
 
 
 <style lang="scss" scoped>
+.en-font {
+  font-family: Lora,'Times New Roman',serif;
+}
+.transparent {
+  background: transparent;
+}
 .fade-out {
   position: relative;
   &:after {
@@ -75,6 +89,15 @@ export default {
     font-size: 3em;
     animation: fade-in 2.3s ease-in 0s 1;
   }
+  .sub-info {
+    width: 100%;
+    position: absolute;
+    bottom: -70px;
+    text-align: center;
+    font-size: 14px;
+    animation: fade-in 2.3s ease-in 0s 1;
+    font-style: italic;
+  }
 }
 .show-icon {
   visibility: visible;
@@ -104,6 +127,9 @@ export default {
     bottom: -34px;
     margin-left: -34px;
   }
+  .sub-info {
+    bottom: -78px;
+  }
   .site-banner {
     height: 320px;
   }
@@ -123,6 +149,9 @@ export default {
     bottom: -40px;
     margin-left: -40px;
   }
+  .sub-info {
+    bottom: -92px;
+  }
   .banner {
     background-attachment: fixed;
   }
@@ -130,7 +159,7 @@ export default {
     font-size: 5em
   }
   .site-banner {
-    height: 68vh;
+    height: 65vh;
   }
 }
 
@@ -141,6 +170,9 @@ export default {
     bottom: -44px;
     margin-left: -44px;
   }
+  .sub-info {
+    bottom: -100px;
+  }
   .banner {
     background-attachment: fixed;
   }
@@ -148,7 +180,7 @@ export default {
     font-size: 6em
   }
   .site-banner {
-    height: 86vh;
+    height: 80vh;
   }
 }
 
