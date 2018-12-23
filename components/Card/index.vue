@@ -1,26 +1,26 @@
 <template lang="pug">
   v-layout.pt-5(justify-center)
-    v-flex(xs12 sm8 set-sm3)
-      v-hover
-        v-card(
-          slot-scope="{ hover }"
-          :class="`elevation-${hover ? 12 : 2}`"
-          class="mx-auto"
+    v-flex.mt-3(xs10 sm8 set-sm3 flex-column)
+      v-card(
+        class="mx-auto"
+        flat
+        hover
+      )
+        v-img(
+          class="white--text"
+          :aspect-ratio="8"
+          src="https://file.lxinr.top/blog/post-bg-index.jpg"
+          gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
         )
-          v-img(
-            class="white--text"
-            height="150px"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-          )
-            v-container(fill-height fluid)
-              v-layout(fill-height column)
-                v-flex.flex.space-between.flex-column(xs12 align-start flexbox) 
-                  .font-weight-light.font-italic.headline.full-w Top 10 Australian beaches,Top 10 Australian beaches
-                  .en-font.text-xs-right.full-w Posted by Liux on October 1, 2018
-          v-card-title(primary-title)
-            .mb-0 {{card_text}}
-          v-card-actions
-            v-btn(flat color="orange") 阅读全文
+          v-container(fill-height fluid)
+            v-layout(fill-height column)
+              v-flex.flex.space-between.flex-column(xs12 align-start flexbox) 
+                .font-weight-light.font-italic.headline.full-w Top 10 Australian beaches,Top 10 Australian beaches
+                .en-font.text-xs-right.full-w Posted by Liux on October 1, 2018
+        v-card-title(primary-title)
+          .mb-0 {{card_text}}
+        v-card-actions.flex-end
+          v-btn(flat color="orange") 阅读全文
 </template>
 
 
@@ -38,6 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .en-font {
   font-family: Lora,'Times New Roman',serif;
   font-style: italic;
@@ -48,6 +49,9 @@ export default {
 }
 .flex-column {
   flex-direction: column;
+}
+.flex-end {
+  justify-content: flex-end;
 }
 .space-between {
   justify-content: space-between

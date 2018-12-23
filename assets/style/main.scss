@@ -1,0 +1,25 @@
+/*
+ * @Author: liuxin 
+ * @Date: 2018-12-23 21:29:54 
+ * @Last Modified by: liuxin
+ * @Last Modified time: 2018-12-23 23:31:13
+ */
+
+$paddingM: 20px;
+
+.border-t {
+  height: 0;
+  width: 100%;
+  position: relative;
+  border-top: 1px solid #e0e0e0;
+  transform-origin: 0 100%;
+  transform: scaleY(.5);
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.bg-lighten-5 {
+  background: #ECEFF1 !important;
+}

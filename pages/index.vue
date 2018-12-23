@@ -1,14 +1,23 @@
 <template lang="pug">
   v-content.px-0.py-0.fade-out(v-scroll="onScroll")
     v-toolbar.transparent(fixed flat dense scroll-off-screen :scroll-threshold="80")
-      v-toolbar-side-icon.hidden-md-and-up.white--text
+      //- v-menu(bottom right transition="slide-y-transition" origin="bottom right")
+      v-menu(offset-y transition="scale-transition" origin="top left" nudge-bottom="5" nudge-right="30" min-width="100")
+        v-toolbar-side-icon.hidden-md-and-up.white--text(slot="activator")
+        v-list.bg-lighten-5
+          v-list-tile(v-for="(item, i) in ['HOME', 'TAGS']" :key="i")
+            v-list-tile-title.txt-center {{item}}
       v-toolbar-title.hidden-sm-and-down.white--text LiuX
       v-spacer
       v-toolbar-items.hidden-sm-and-down
         v-btn.h3.white--text(flat @click="$vuetify.goTo(8800)") HOME
         v-btn.h3.white--text(flat) TAGS
     v-toolbar(fixed dense inverted-scroll scroll-off-screen :scroll-threshold="80")
-      v-toolbar-side-icon.hidden-md-and-up
+      v-menu(offset-y transition="scale-transition" origin="top left" nudge-bottom="5" nudge-right="30" min-width="100")
+        v-toolbar-side-icon.hidden-md-and-up(slot="activator")
+        v-list.bg-lighten-5
+          v-list-tile(v-for="(item, i) in ['HOME', 'TAGS']" :key="i")
+            v-list-tile-title.txt-center {{item}}
       v-toolbar-title.hidden-sm-and-down LiuX
       v-spacer
       v-toolbar-items.hidden-sm-and-down
@@ -19,8 +28,7 @@
       .avatar.elevation-10
       .sub-info 这深夜一片寂静，是因为你还没听到声音
     v-container.px-0.py-5(fluid justify-center)
-      v-hover 啊哈哈哈哈哈
-      Card(v-for="index in 8" :key="index")  
+      Card(v-for="index in 8" :key="index")
     Footer
 </template>
 
