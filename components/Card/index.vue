@@ -2,38 +2,57 @@
   v-layout.pt-5(justify-center)
     v-flex.mt-3(xs10 sm8 set-sm3 flex-column)
       v-card(
-        class="mx-auto"
         flat
         hover
+        @click.prevent="btn"
       )
         v-img(
           class="white--text"
           :aspect-ratio="8"
-          src="https://file.lxinr.top/blog/post-bg-index.jpg"
+          :src="data.listImg"
           gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
         )
           v-container(fill-height fluid)
             v-layout(fill-height column)
               v-flex.flex.space-between.flex-column(xs12 align-start flexbox) 
-                .font-weight-light.font-italic.headline.full-w Top 10 Australian beaches,Top 10 Australian beaches
-                .en-font.text-xs-right.full-w Posted by Liux on October 1, 2018
+                .font-weight-light.font-italic.headline.full-w {{data.title}}
+                .en-font.text-xs-right.full-w {{`Posted by ${data.author} on ${date}`}}
         v-card-title(primary-title)
-          .mb-0 {{card_text}}
+          .mb-0 {{data.subTitle}}
         v-card-actions.flex-end
           v-btn(flat color="orange") 阅读全文
 </template>
 
-
 <script>
+import { format } from 'date-fns'
+
 export default {
+  props: {
+    data: {
+      type: Object,
+      default: (() => ({}))
+    }
+  },
   data() {
     return {
       reviews: 413,
       value: 4.5,
       card_text:
-        "Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat."
+        "补充在实际使用中利用css实现的一些功能的方法"
     }
-  }
+  },
+  computed: {
+    date() {
+      const { create_time } = this.data
+      return create_time && format(create_time, 'MMMM D, YYYY')
+    }
+  },
+  methods: {
+    btn() {
+      const { _id } = this.data
+      this.$router.push(`/blog/${_id}`)
+    }
+  },
 }
 </script>
 

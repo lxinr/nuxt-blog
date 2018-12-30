@@ -7,22 +7,26 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: "Liux's Blog",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
+    script: [
+      { src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js' }
+    ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+      { rel: 'stylesheet', href: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css' }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#263238' },
+  loading: { color: '#546E7A' },
 
   /*
   ** Global CSS
@@ -51,9 +55,12 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    baseURL: 'http://192.168.0.104:3003'
     // See https://github.com/nuxt-community/axios-module#options
   },
-
+  router: {
+    middleware: 'auth'
+  },
   /*
   ** Build configuration
   */

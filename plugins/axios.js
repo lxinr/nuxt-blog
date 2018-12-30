@@ -2,10 +2,14 @@
  * @Author: liuxin 
  * @Date: 2018-12-21 00:09:44 
  * @Last Modified by: liuxin
- * @Last Modified time: 2018-12-21 00:16:02
+ * @Last Modified time: 2018-12-29 15:44:07
  */
 
 export default function ({ $axios, redirect }) {
+  $axios.onResponse(res => {
+    return res.data
+  })
+
   $axios.onError(error => {
     const code = parseInt(error.response && error.response.status)
     if (code === 400) {

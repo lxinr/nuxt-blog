@@ -13,6 +13,7 @@ const bodyParser = require('koa-bodyparser')
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
 
+
 async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)

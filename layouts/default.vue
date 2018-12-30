@@ -1,15 +1,18 @@
 <template>
-  <v-app>
+  <v-app class="bg-default">
+    <Header />
     <nuxt />
-    <!-- <Footer /> -->
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Footer from '~/components/Footer'
+import Header from '~/components/Header'
 export default {
   components: {
-    Footer
+    Footer,
+    Header
   }
 }
 </script>

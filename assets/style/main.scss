@@ -2,10 +2,29 @@
  * @Author: liuxin 
  * @Date: 2018-12-23 21:29:54 
  * @Last Modified by: liuxin
- * @Last Modified time: 2018-12-23 23:31:13
+ * @Last Modified time: 2018-12-30 17:09:12
  */
 
+@import './base.scss';
+@import './blog.scss';
+
 $paddingM: 20px;
+$defaultBg: #f5f6f8;
+
+footer {
+  padding: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+.bg-default {
+  background: $defaultBg !important;
+}
 
 .border-t {
   height: 0;

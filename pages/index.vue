@@ -1,41 +1,25 @@
 <template lang="pug">
-  v-content.px-0.py-0.fade-out(v-scroll="onScroll")
-    v-toolbar.transparent(fixed flat dense scroll-off-screen :scroll-threshold="80")
-      //- v-menu(bottom right transition="slide-y-transition" origin="bottom right")
-      v-menu(offset-y transition="scale-transition" origin="top left" nudge-bottom="5" nudge-right="30" min-width="100")
-        v-toolbar-side-icon.hidden-md-and-up.white--text(slot="activator")
-        v-list.bg-lighten-5
-          v-list-tile(v-for="(item, i) in ['HOME', 'TAGS']" :key="i")
-            v-list-tile-title.txt-center {{item}}
-      v-toolbar-title.hidden-sm-and-down.white--text LiuX
-      v-spacer
-      v-toolbar-items.hidden-sm-and-down
-        v-btn.h3.white--text(flat @click="$vuetify.goTo(8800)") HOME
-        v-btn.h3.white--text(flat) TAGS
-    v-toolbar(fixed dense inverted-scroll scroll-off-screen :scroll-threshold="80")
-      v-menu(offset-y transition="scale-transition" origin="top left" nudge-bottom="5" nudge-right="30" min-width="100")
-        v-toolbar-side-icon.hidden-md-and-up(slot="activator")
-        v-list.bg-lighten-5
-          v-list-tile(v-for="(item, i) in ['HOME', 'TAGS']" :key="i")
-            v-list-tile-title.txt-center {{item}}
-      v-toolbar-title.hidden-sm-and-down LiuX
-      v-spacer
-      v-toolbar-items.hidden-sm-and-down
-        v-btn.h3(flat @click="$vuetify.goTo(8800)") HOME
-        v-btn.h3(flat) TAGS
+  v-content.px-0.py-0(v-scroll="onScroll")
     .banner.mb-5.site-banner
       .tit LiuX Blog
       .avatar.elevation-10
       .sub-info 这深夜一片寂静，是因为你还没听到声音
     v-container.px-0.py-5(fluid justify-center)
-      Card(v-for="index in 8" :key="index")
-    Footer
+      Card(v-for="(item, index) in list" :key="index" :data="item")
+    //- Footer
 </template>
 
 <script>
 import Footer from '~/components/Footer'
 import Card from '~/components/Card'
+import { fetchList } from '~/apis'
+
 export default {
+  async asyncData({$axios}) {
+    const res = await fetchList($axios)
+    console.log(res)
+    return { list: res.content || [] }
+  },
   components: {
     Footer,
     Card
@@ -95,7 +79,7 @@ export default {
     font-family: Lora,'Times New Roman',serif;
     color: #fff;
     font-size: 3em;
-    animation: fade-in 2.3s ease-in 0s 1;
+    animation: fade-in 0.8s ease-in 0s 1;
   }
   .sub-info {
     width: 100%;
@@ -103,7 +87,7 @@ export default {
     bottom: -70px;
     text-align: center;
     font-size: 14px;
-    animation: fade-in 2.3s ease-in 0s 1;
+    animation: fade-in 0.8s ease-in 0s 1;
     font-style: italic;
   }
 }
@@ -125,7 +109,7 @@ export default {
   left: 50%;
   margin-left: -30px;
   z-index: 1;
-  animation: fade-in 2.3s ease-in 0s 1;
+  animation: fade-in 0.8s ease-in 0s 1;
 }
 
 @media only screen and (min-width: 640px) {
