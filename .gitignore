@@ -81,4 +81,4 @@ dist
 .idea
 
 # 不提交配置文件
-server/*
+# server/*

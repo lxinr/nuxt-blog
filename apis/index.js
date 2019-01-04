@@ -10,13 +10,13 @@ export function fetchInfo($axios) {
 }
 
 export function fetchMd($axios) {
-  return $axios.get('http://192.168.0.104:3003/api/blog')
+  return $axios.get('/api/blog')
 }
 
 export function fetchList($axios) {
-  return $axios.get('http://192.168.0.104:3003/api/bloglist')
+  return $axios.get('/api/bloglist')
 }
 
 export function fetchDetail($axios, id) {
-  return $axios.get(`http://192.168.0.104:3003/api/blogdetail?id=${id}`)
+  return $axios.get(`/api/blogdetail?id=${id}`)
 }

@@ -2,7 +2,7 @@
  * @Author: liuxin 
  * @Date: 2018-12-21 00:09:44 
  * @Last Modified by: liuxin
- * @Last Modified time: 2018-12-29 15:44:07
+ * @Last Modified time: 2018-12-30 22:30:43
  */
 
 export default function ({ $axios, redirect }) {
@@ -11,6 +11,7 @@ export default function ({ $axios, redirect }) {
   })
 
   $axios.onError(error => {
+    console.log('error--', error)
     const code = parseInt(error.response && error.response.status)
     if (code === 400) {
       redirect('/400')

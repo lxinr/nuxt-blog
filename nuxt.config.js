@@ -55,11 +55,20 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://192.168.0.104:3003'
+    // baseURL: 'http://192.168.0.104:3003'
+    baseURL: 'http://127.0.0.1:3100'
     // See https://github.com/nuxt-community/axios-module#options
   },
   router: {
     middleware: 'auth'
+  },
+  /*
+  ** cache
+  * https://zh.nuxtjs.org/api/configuration-cache
+  */
+  cache: {
+    max: 200,
+    maxAge: 1000 * 60 * 10
   },
   /*
   ** Build configuration

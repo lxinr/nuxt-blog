@@ -4,8 +4,11 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
 const app = new Koa()
+
+consola.log('process.env----', process.env)
+
 const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3003
+const port = process.env.PORT || 3100
 
 const bodyParser = require('koa-bodyparser')
 
