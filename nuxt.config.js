@@ -56,8 +56,6 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    // baseURL: 'https://www.lxinr.top'
-    // baseURL: 'http://192.168.0.104:3003'
     baseURL: 'https://api.lxinr.top'
     // See https://github.com/nuxt-community/axios-module#options
   },

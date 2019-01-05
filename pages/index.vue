@@ -17,15 +17,6 @@ import { fetchList } from '~/apis'
 export default {
   async asyncData({$axios, error}) {
     let res = await fetchList($axios)
-    // try {
-    //   res = await fetchList($axios)
-    // } catch (err) {
-    //   if (err.response.status !== 404) {
-    //     return error({ statusCode: 500, message: '500 serive error' })
-    //   }
-    //   return error({ statusCode: 404, message: '404 not found' })
-    // }
-    console.log('-res------', res)
     return { list: (res && res.data) || [] }
   },
   components: {
