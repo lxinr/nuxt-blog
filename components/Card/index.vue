@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     btn() {
-      const { _id } = this.data
-      this.$router.push(`/blog/${_id}`)
+      const { title } = this.data
+      this.$router.push(`/blog/${title}`)
     }
   },
 }

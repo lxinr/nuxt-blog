@@ -76,6 +76,11 @@ pre code {
       border: 1px solid #eee!important;
     }
   }
+  p {
+    img {
+      max-width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 640px) {
@@ -93,7 +98,7 @@ pre code {
     border: 1px solid #ddd;
   }
   .par-h {
-    height: 320px !important;
+    height: 360px !important;
   }
 }
 
@@ -102,7 +107,7 @@ pre code {
     width: 620px;
   }
   .par-h {
-    height: 320px !important;
+    height: 360px !important;
   }
 }
 
@@ -111,7 +116,7 @@ pre code {
     width: 750px;
   }
   .par-h {
-    height: 360px !important;
+    height: 400px !important;
   }
 }
 
@@ -120,6 +125,6 @@ pre code {
     width: 960px;
   }
   .par-h {
-    height: 420px !important;
+    height: 450px !important;
   }
 }

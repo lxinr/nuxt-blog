@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-content.px-0.py-0(v-scroll="onScroll")
+  v-content.px-0.py-0
     .banner.mb-5.site-banner
       .tit LiuX Blog
       .avatar.elevation-10
@@ -15,24 +15,22 @@ import Card from '~/components/Card'
 import { fetchList } from '~/apis'
 
 export default {
-  async asyncData({$axios}) {
-    const res = await fetchList($axios)
-    console.log(res)
-    return { list: res.content || [] }
+  async asyncData({$axios, error}) {
+    let res = await fetchList($axios)
+    // try {
+    //   res = await fetchList($axios)
+    // } catch (err) {
+    //   if (err.response.status !== 404) {
+    //     return error({ statusCode: 500, message: '500 serive error' })
+    //   }
+    //   return error({ statusCode: 404, message: '404 not found' })
+    // }
+    console.log('-res------', res)
+    return { list: (res && res.data) || [] }
   },
   components: {
     Footer,
     Card
-  },
-  data() {
-    return {
-      offsetTop: 0
-    }
-  },
-  methods: {
-    onScroll (e) {
-      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
-    }
   }
 }
 </script>

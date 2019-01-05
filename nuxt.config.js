@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: 'universal',
@@ -55,9 +56,13 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    // baseURL: 'https://www.lxinr.top'
     // baseURL: 'http://192.168.0.104:3003'
-    baseURL: 'http://127.0.0.1:3100'
+    baseURL: 'https://api.lxinr.top'
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  proxy: {
+    '/blog/*': 'https://api.lxinr.top'
   },
   router: {
     middleware: 'auth'
@@ -86,6 +91,18 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+      if (!ctx.isDev && ctx.isClient) {
+        config.plugins.push(
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                warnings: false,
+                drop_console: true
+              }
+            }
+          })
+        )
       }
     }
   }

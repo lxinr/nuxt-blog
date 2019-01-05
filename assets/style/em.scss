@@ -1,0 +1,30 @@
+/*
+ * @Author: liuxin 
+ * @Date: 2019-01-05 19:26:19 
+ * @Last Modified by: liuxin
+ * @Last Modified time: 2019-01-05 20:07:22
+ */
+
+// @media screen and (max-width: 414px) {
+//   html, body {
+//     font-size: 12px !important;
+//   }
+// }
+
+// @media (min-width: 414px) and (max-width: 768px) {
+//   html, body {
+//     font-size: 14px !important;
+//   }
+// }
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  html, body {
+    font-size: 15px !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  html, body {
+    font-size: 16px !important;
+  }
+}
