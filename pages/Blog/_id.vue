@@ -23,10 +23,10 @@ export default {
   async asyncData({$axios, params, error}) {
     let res = res = await fetchDetail($axios, params.id)
     let { data = {} } = res || {}
-    const { create_time = '', subTitle = '', title = '', author = '', bImg = '' } = data || {}
+    const { createTime = '', subTitle = '', title = '', author = '', bImg = '' } = data || {}
     let formatCon = data.content && data.content.replace('<table>', '<div class="table-responsive"><table>')
     formatCon = formatCon.replace('</table>', '</table></div>')
-    return { content: formatCon, create_time, subTitle, title, author, bImg }
+    return { content: formatCon, createTime, subTitle, title, author, bImg }
   },
   data() {
     return {
@@ -38,8 +38,8 @@ export default {
       return this.offsetTop > 120
     },
     date() {
-      const { create_time } = this
-      return create_time && format(create_time, 'MMMM D, YYYY')
+      const { createTime } = this
+      return createTime && format(createTime, 'MMMM D, YYYY')
     }
   },
   head () {

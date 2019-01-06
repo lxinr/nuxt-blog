@@ -43,8 +43,8 @@ export default {
   },
   computed: {
     date() {
-      const { create_time } = this.data
-      return create_time && format(create_time, 'MMMM D, YYYY')
+      const { createTime } = this.data
+      return createTime && format(createTime, 'MMMM D, YYYY')
     }
   },
   methods: {
