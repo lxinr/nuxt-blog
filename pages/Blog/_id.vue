@@ -20,11 +20,12 @@ import { fetchDetail } from '~/apis'
 import { format } from 'date-fns'
 
 export default {
-  async asyncData({$axios, params, error}) {
-    let res = res = await fetchDetail($axios, params.id)
+  async asyncData({$axios, params, error, redirect}) {
+    let res = await fetchDetail($axios, params.id)
     let { data = {} } = res || {}
-    const { createTime = '', subTitle = '', title = '', author = '', bImg = '' } = data || {}
-    let formatCon = data.content && data.content.replace('<table>', '<div class="table-responsive"><table>')
+    const { createTime = '', subTitle = '', title = '', author = '', bImg = '', content = '' } = data || {}
+    if(!content || !title) redirect('/404')
+    let formatCon = content.replace('<table>', '<div class="table-responsive"><table>')
     formatCon = formatCon.replace('</table>', '</table></div>')
     return { content: formatCon, createTime, subTitle, title, author, bImg }
   },
