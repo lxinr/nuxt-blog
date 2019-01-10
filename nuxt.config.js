@@ -56,11 +56,11 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'https://api.lxinr.top'
+    baseURL: 'https://api.lxinr.com'
     // See https://github.com/nuxt-community/axios-module#options
   },
   proxy: {
-    '/blog/*': 'https://api.lxinr.top'
+    '/blog/*': 'https://api.lxinr.com'
   },
   router: {
     middleware: 'auth'
