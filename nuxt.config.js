@@ -74,7 +74,7 @@ module.exports = {
   * https://zh.nuxtjs.org/api/configuration-cache
   */
   cache: {
-    max: 200,
+    max: 150,
     maxAge: 1000 * 60 * 10
   },
   /*
