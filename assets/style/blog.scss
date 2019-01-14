@@ -31,8 +31,7 @@ pre code {
 
 .blog-container {
   width: 100%;
-  background: #fff;
-  padding: 24px 15px;
+  padding: 15px 0;
   padding-top: 1px;
   margin-right: auto;
   margin-left: auto;
@@ -111,20 +110,110 @@ pre code {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 958px) {
   .blog-container {
-    width: 750px;
+    width: 700px;
   }
   .par-h {
     height: 400px !important;
   }
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 959px) and (max-width: 1281px) {
   .blog-container {
-    width: 960px;
+    width: 85vw;
+  }
+  .par-h {
+    height: 400px !important;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1959px) {
+  .blog-container {
+    width: 1000px;
   }
   .par-h {
     height: 450px !important;
+  }
+}
+
+@media (min-width: 1960px) {
+  .blog-container {
+    width: 1200px;
+  }
+  .par-h {
+    height: 480px !important;
+  }
+}
+
+.catalog-ul {
+  cursor: pointer;
+  background: transparent;
+  line-height: 1.4;
+  padding-left: 0px;
+  .catalog-text {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 4px;
+  }
+  .catalog-text-2 {
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 4px;
+    color: #455A64;
+  }
+  .catalog-text-3 {
+    font-size: 13px;
+    padding-left: 10px;
+    color: #546E7A;
+    font-weight: 550;
+  }
+  .catalog-text-4 {
+    font-size: 12px;
+    padding-left: 18px;
+    color: #78909C;
+  }
+  .catalog-text-5 {
+    font-size: 11px;
+    padding-left: 24px;
+    color: #90A4AE;
+    font-weight: 500;
+  }
+  .active {
+    background: #ECEFF1;
+    color: #263238;
+    font-weight: 700;
+  }
+
+  li {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    list-style: none;
+  }
+}
+
+// dd.catalog-text {
+//   padding-bottom: 12px;
+// }
+
+/* 设置滚动条的样式 */
+.blog-container {
+  ::-webkit-scrollbar {
+    width:6px;
+  }
+  /* 滚动槽 */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+    border-radius:10px;
+  }
+  /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background: #BDBDBD;
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #BDBDBD;
   }
 }

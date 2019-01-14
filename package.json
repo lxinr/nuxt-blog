@@ -1,6 +1,6 @@
 {
   "name": "nuxt-blog",
-  "version": "1.0.5",
+  "version": "1.1.5",
   "description": "一个基于nuxt.js构建博客系统",
   "author": "lxinr",
   "private": true,
@@ -14,6 +14,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@mdi/font": "^3.3.92",
     "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
     "date-fns": "^1.30.1",

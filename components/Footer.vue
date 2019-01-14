@@ -8,8 +8,9 @@
       flat
       tile
     >
-      <v-card-actions class="grey darken-3 justify-center">
-        &copy;2018&nbsp;&nbsp;—&nbsp;&nbsp;<strong>Liux's Blog</strong>
+      <v-card-actions class="grey darken-3 justify-center display-5">
+        Copyright © &nbsp;<strong>Liux's Blog</strong>&nbsp; 2019
+        <!-- &copy;2019&nbsp;&nbsp;—&nbsp;&nbsp;<strong>Liux's Blog</strong> -->
       </v-card-actions>
     </v-card>
   </v-footer>

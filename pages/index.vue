@@ -5,23 +5,66 @@
       .avatar.elevation-10
       .sub-info 这深夜一片寂静，是因为你还没听到声音
     v-container.px-0.py-5(fluid justify-center)
-      Card(v-for="(item, index) in list" :key="index" :data="item")
-    //- Footer
+      Card(v-for="(item, index) in blogList" :key="index" :data="item")
+      .pageination-container
+        v-pagination(:total-visible="5" v-model="page" color="blue-grey darken-1" :length="info.pageTotal" prev-icon="mdi-menu-left" next-icon="mdi-menu-right")
 </template>
 
 <script>
 import Footer from '~/components/Footer'
 import Card from '~/components/Card'
 import { fetchList } from '~/apis'
+import { mapState } from 'vuex'
 
 export default {
-  async asyncData({$axios, error}) {
+  async asyncData({$axios, error, store}) {
+    if ( store.state.blogListInfo ) return
     let res = await fetchList($axios)
-    return { list: (res && res.data) || [] }
+    const info = res && res.data || {}
+    store.commit('setAllList', { page: info.page || 1, list: info.list || [] })
+    store.commit('setListInfo', info)
   },
   components: {
     Footer,
     Card
+  },
+  data() {
+    return {
+      page: this.$store.state.blogPage
+    }
+  },
+  computed: {
+    ...mapState(['blogList', 'blogAllList', 'blogListInfo', 'blogPage']),
+    info() {
+      const { blogListInfo } = this
+      const { total = 1, page = 1, pageTotal = 1 } = blogListInfo || {}
+      return {
+        total,
+        pageTotal,
+        page
+      }
+    }
+  },
+  watch: {
+    page() {
+      this.getList(this.page)
+    }
+  },
+  methods: {
+    getList(page = 1) {
+      const { blogAllList = {} } = this
+      this.$store.commit('setBlogPage', page)
+      if (blogAllList[page]) {
+        this.$store.commit('setList', blogAllList[page])
+        return
+      } else {
+        fetchList(this.$axios, { page, limit: 3 }).then(res => {
+          const info = res && res.data || {}
+          this.$store.commit('setAllList', { page: info.page || 1, list: info.list || [] })
+          this.$store.commit('setListInfo', info)
+        })
+      }
+    }
   }
 }
 </script>
@@ -184,6 +227,18 @@ export default {
     background: transparent;
     display: none;
     opacity: 0;
+  }
+}
+
+.pageination-container {
+  padding: 36px 0 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.pageination-container {
+  /deep/ li {
+    margin: 0 3px;
   }
 }
 </style>

@@ -15,11 +15,12 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     script: [
-      { src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js' }
+      { src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js' },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900%7CRoboto+Mono:500' },
       { rel: 'stylesheet', href: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css' }
     ]
   },
@@ -33,6 +34,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@mdi/font/css/materialdesignicons.css',
     '~/assets/style/main.scss',
     '~/assets/style/app.styl'
   ],
@@ -56,11 +58,13 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'https://api.lxinr.top'
+    baseURL: 'https://api.lxinr.com'
+    // baseURL: 'http://127.0.0.1:3001'
     // See https://github.com/nuxt-community/axios-module#options
   },
   proxy: {
-    '/blog/*': 'https://api.lxinr.top'
+    '/blog/*': 'https://api.lxinr.com'
+    // '/blog/*': 'http://127.0.0.1:3001'
   },
   router: {
     middleware: 'auth'
