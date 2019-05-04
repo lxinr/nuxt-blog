@@ -1,7 +1,8 @@
 <template lang="pug">
   v-content.px-0.py-0(v-scroll="onScroll")
-    v-parallax.par-h(height="auto" :src="blogContent.bImg")
-      v-layout(
+    .par-h(:style="{backgroundImage: blogContent.bImg && `url(${blogContent.bImg})`}" :class="{'nobg': !blogContent.bImg}")
+      .mask
+      v-layout.blog-info(
         align-center
         column
         justify-center
@@ -10,11 +11,15 @@
         h4.txt-h4.font-500.mb-5 {{blogContent.subTitle}}
         h4.txt-h4.font-500.font-weight-light.en-font {{`${blogContent.author} on ${date}`}}
     .blog-container
-      #blog-content.blog-content(v-html="blogContent.content")
-      .blog-catalog.hidden-sm-and-down
-        .catalog-content(:class="{'fixed-cata': fixedCata}")
-          .catalog-list(v-if="blogContent.content && paraH")
-            tree-view(:data="cataLog")
+      .blog-content-box
+        #blog-content.blog-content(v-html="blogContent.content")
+        .blog-catalog.hidden-sm-and-down
+          .catalog-content(:class="{'fixed-cata': fixedCata}")
+            .catalog-list(v-if="blogContent.content && paraH")
+              tree-view(:data="cataLog")
+      .blog-other(flex)
+        v-btn.btn(v-if="nextPreBtns" :to="nextPreBtns.gt && nextPreBtns.gt.path" :disabled="nextPreBtns.gt.disabled") {{`上一篇: ${nextPreBtns.gt.title}`}}
+        v-btn.btn(v-if="nextPreBtns" :to="nextPreBtns.lt && nextPreBtns.lt.path" :disabled="nextPreBtns.lt.disabled") {{`下一篇: ${nextPreBtns.lt.title}`}}
     v-fab-transition
       v-btn.btm(color="blue-grey darken-2" v-show="show" dark fixed right bottom fab small open-on-hover @click="$vuetify.goTo(0)")
         v-icon mdi-arrow-up-thick
@@ -29,7 +34,7 @@ import treeView from '~/components/Treeview'
 export default {
   async asyncData({$axios, params, error, redirect, store}) {
     const { blogAllContent = {} } = store && store.state
-    // console.log(blogAllContent)
+    console.log(blogAllContent[params.id])
     if(blogAllContent[params.id]) {
       store.commit('setContent', blogAllContent[params.id])
       return
@@ -63,6 +68,25 @@ export default {
     date() {
       const { blogContent } = this
       return blogContent.createTime && format(blogContent.createTime, 'MMMM D, YYYY')
+    },
+    nextPreBtns() {
+      const { blogContent = {} } = this
+      const { gtBlog, ltBlog } = blogContent
+      if (blogContent && blogContent.title) {
+        let gt = {
+          title: gtBlog && gtBlog.title || '没有了',
+          path: gtBlog && `/blog/${gtBlog.title}`,
+          disabled: !gtBlog
+        }
+        let lt = {
+          title: ltBlog && ltBlog.title || '没有了',
+          path: ltBlog && `/blog/${ltBlog.title}`,
+          disabled: !ltBlog
+        }
+        return { lt, gt }
+      } else {
+        return null
+      }
     }
   },
   head () {
@@ -113,8 +137,22 @@ export default {
 }
 .blog-container {
   display: flex;
+  flex-direction: column;
   background: transparent;
   /* position: relative; */
+}
+.blog-content-box {
+  width: 100%;
+  display: flex;
+}
+.blog-other {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0 10px;
+  .btn {
+    margin: 0 30px;
+  }
 }
 .blog-content {
   background: #fff;
@@ -122,17 +160,18 @@ export default {
   flex: 1;
   padding: 0 20px;
   padding-bottom: 20px;
-  margin-right: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .blog-catalog {
   width: 200px;
   position: relative;
-  /* position: relative; */
-  /* overflow: auto; */
+  margin-left: 18px;
+  overflow: hidden;
 }
 .catalog-content {
   overflow: auto;
-  max-height: 90vh;
+  max-height: 70vh;
   width: 200px;
   position: absolute;
   top: 15px;
@@ -145,6 +184,43 @@ export default {
 .fixed-cata {
   position: fixed;
   top: 63px;
+}
+
+.par-h {
+  color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: rgba(223, 223, 223, 0.15)
+  }
+  .blog-info {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 60px;
+    z-index: 3;
+  }
+  &.nobg {
+    color: inherit;
+    background: #fff;
+    .mask {
+      display: none;
+    }
+    .blog-info {
+      
+    }
+  }
 }
 </style>
 

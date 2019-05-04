@@ -7,7 +7,7 @@
     v-container.px-0.py-5(fluid justify-center)
       Card(v-for="(item, index) in blogList" :key="index" :data="item")
       .pageination-container
-        v-pagination(:total-visible="5" v-model="page" color="blue-grey darken-1" :length="info.pageTotal" prev-icon="mdi-menu-left" next-icon="mdi-menu-right")
+        v-pagination(:total-visible="6" v-model="page" color="blue-grey darken-1" :length="info.pageTotal" prev-icon="mdi-menu-left" next-icon="mdi-menu-right")
 </template>
 
 <script>
@@ -21,7 +21,8 @@ export default {
     if ( store.state.blogListInfo ) return
     let res = await fetchList($axios)
     const info = res && res.data || {}
-    store.commit('setAllList', { page: info.page || 1, list: info.list || [] })
+    console.log('info----', info)
+    store.commit('setAllList', { page: info.page || 1, list: info.list || [], total: info.total })
     store.commit('setListInfo', info)
   },
   components: {
@@ -34,7 +35,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['blogList', 'blogAllList', 'blogListInfo', 'blogPage']),
+    ...mapState(['blogList', 'blogAllList', 'blogListInfo', 'blogPage', 'blogTotal']),
     info() {
       const { blogListInfo } = this
       const { total = 1, page = 1, pageTotal = 1 } = blogListInfo || {}
@@ -54,11 +55,12 @@ export default {
     getList(page = 1) {
       const { blogAllList = {} } = this
       this.$store.commit('setBlogPage', page)
+      console.log(this.blogPage, 'total-----', this.blogTotal)
       if (blogAllList[page]) {
         this.$store.commit('setList', blogAllList[page])
         return
       } else {
-        fetchList(this.$axios, { page, limit: 3 }).then(res => {
+        fetchList(this.$axios, { page }).then(res => {
           const info = res && res.data || {}
           this.$store.commit('setAllList', { page: info.page || 1, list: info.list || [] })
           this.$store.commit('setListInfo', info)

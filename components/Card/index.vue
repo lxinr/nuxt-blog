@@ -15,7 +15,7 @@
           v-container(fill-height fluid)
             v-layout(fill-height column)
               v-flex.flex.space-between.flex-column(xs12 align-start flexbox) 
-                .font-weight-light.font-italic.headline.full-w {{data.title}}
+                .font-weight-light.font-italic.cell-title.full-w {{data.title}}
                 .en-font.text-xs-right.full-w {{`Posted by ${data.author} on ${date}`}}
         v-card-title(primary-title)
           .mb-0 {{data.subTitle}}
@@ -38,7 +38,7 @@ export default {
       reviews: 413,
       value: 4.5,
       card_text:
-        "补充在实际使用中利用css实现的一些功能的方法"
+        ""
     }
   },
   computed: {

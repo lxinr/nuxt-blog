@@ -1,6 +1,6 @@
 {
   "name": "nuxt-blog",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "一个基于nuxt.js构建博客系统",
   "author": "lxinr",
   "private": true,

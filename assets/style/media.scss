@@ -1,0 +1,136 @@
+@media screen and (max-width: 640px) {
+  .blog-other {
+    display: none !important;
+  }
+  .blog-container {
+    margin-bottom: 0;
+  }
+  .cell-title {
+    font-size: 20px !important;
+  }
+  .about-container {
+    background: #f5f6f8 !important;
+    &:after {
+      display: none !important;
+    }
+  }
+  .about-content {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .blog-other {
+    display: none !important;
+  }
+  .blog-container {
+    margin-bottom: 0;
+  }
+  .cell-title {
+    font-size: 16px !important;
+  }
+  .about-container {
+    background: #fff !important;
+    &:after {
+      display: none !important;
+    }
+  }
+  .about-content {
+    width: 100%;
+    padding: 20px !important;
+  }
+  .about-header {
+    height: 250px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+  }
+  .par-h {
+    height: 360px;
+    &.nobg {
+      height: 300px;
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .blog-container {
+    width: 620px;
+  }
+  .about-content {
+    width: 580px;
+  }
+  .par-h {
+    height: 360px;
+    &.nobg {
+      height: 300px;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 958px) {
+  .blog-container {
+    width: 700px;
+  }
+  .about-content {
+    width: 660px;
+  }
+  .par-h {
+    height: 400px;
+    &.nobg {
+      height: 320px;
+    }
+  }
+}
+
+@media (min-width: 959px) and (max-width: 1281px) {
+  .blog-container {
+    width: 85vw;
+  }
+  .about-content {
+    width: 80vw;
+  }
+  .par-h {
+    height: 400px;
+    &.nobg {
+      height: 320px;
+    }
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1959px) {
+  .blog-container {
+    width: 1000px;
+  }
+  .about-content {
+    width: 940px;
+  }
+  .par-h {
+    height: 450px;
+    &.nobg {
+      height: 360px;
+    }
+  }
+}
+
+@media (min-width: 1960px) {
+  .blog-container {
+    width: 1200px;
+  }
+  .about-content {
+    width: 1100px;
+  }
+  .par-h {
+    height: 480px;
+    &.nobg {
+      height: 400px;
+    }
+  }
+}

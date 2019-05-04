@@ -1,20 +1,9 @@
-<template>
-  <v-footer
-    dark
-    height="auto"
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-actions class="grey darken-3 justify-center display-5">
-        Copyright © &nbsp;<strong>Liux's Blog</strong>&nbsp; 2019
-        <!-- &copy;2019&nbsp;&nbsp;—&nbsp;&nbsp;<strong>Liux's Blog</strong> -->
-      </v-card-actions>
-    </v-card>
-  </v-footer>
+<template lang="pug">
+  v-footer.bg-default(height="auto")
+    v-card.flex.bg-default(flat tile)
+      v-card-actions.justify-center.pad-c-m.blue-grey--text.text--darken-2 Copyright © &nbsp;<strong>Liux's Blog</strong>&nbsp; 2019
 </template>
+
 
 <script>
   export default {
@@ -29,3 +18,11 @@
     })
   }
 </script>
+
+<style lang="scss" scoped>
+.pad-c-m {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+</style>
+

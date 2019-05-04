@@ -3,7 +3,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: 'universal',
-
+  // 环境变量配置
+  env: {
+    nodeEnv: process.env.NODE_ENV
+  },
   /*
   ** Headers of the page
   */
@@ -16,7 +19,8 @@ module.exports = {
     ],
     script: [
       { src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js' }
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js' },
+      { src: 'https://hm.baidu.com/hm.js?7a6dfff2bfc4fed2b06920f2e353e5cc' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon.png' },
@@ -44,7 +48,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vuetify',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/ga'
   ],
 
   /*
@@ -75,7 +80,7 @@ module.exports = {
   */
   cache: {
     max: 150,
-    maxAge: 1000 * 60 * 10
+    maxAge: 1000 * 60 * 100
   },
   /*
   ** Build configuration
