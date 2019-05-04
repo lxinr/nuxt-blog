@@ -1,0 +1,50 @@
+/*
+ * @Author: liuxin 
+ * @Date: 2018-12-23 21:29:54 
+ * @Last Modified by: liuxin
+ * @Last Modified time: 2019-04-04 14:57:36
+ */
+
+@import './em.scss';
+@import './base.scss';
+@import './blog.scss';
+@import './media.scss';
+
+$paddingM: 20px;
+$defaultBg: #f5f6f8;
+
+footer {
+  padding: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .2s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+.bg-default {
+  background: $defaultBg !important;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.border-t {
+  height: 0;
+  width: 100%;
+  position: relative;
+  border-top: 1px solid #e0e0e0;
+  transform-origin: 0 100%;
+  transform: scaleY(.5);
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.bg-lighten-5 {
+  background: #ECEFF1 !important;
+}

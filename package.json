@@ -1,24 +1,33 @@
 {
   "name": "nuxt-blog",
-  "version": "1.0.0",
+  "version": "1.1.7",
   "description": "一个基于nuxt.js构建博客系统",
   "author": "lxinr",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 PORT=3003 nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development PORT=3100 nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production HOST=127.0.0.1 PORT=3003 node server/index.js",
+    "start": "nuxt build && cross-env NODE_ENV=production PORT=3100 node server/index.js",
+    "pm2": "cross-env NODE_ENV=production PORT=3100 pm2 start server/index.js --name=\"blog\"",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@mdi/font": "^3.3.92",
     "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
+    "date-fns": "^1.30.1",
+    "fs-extra": "^7.0.1",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
+    "node-sass": "^4.11.0",
     "nuxt": "^2.3.4",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {

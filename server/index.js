@@ -4,14 +4,16 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
 const app = new Koa()
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3003
 
-const bodyParser = require('koa-bodyparser')
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 3100
+
+// const bodyParser = require('koa-bodyparser')
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
+
 
 async function start() {
   // Instantiate nuxt.js
@@ -22,9 +24,6 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
-
-  app.use(bodyParser())
-  app.use(require('./routers').routes())
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
